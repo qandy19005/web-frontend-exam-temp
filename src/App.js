@@ -1,5 +1,7 @@
+import JobListPage from './pages/JobListPage';
+
 function App() {
-  return (<div className='main'>Hello World</div>);
+  return <JobListPage />;
 }
 
 export default App;
