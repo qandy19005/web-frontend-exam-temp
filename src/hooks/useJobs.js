@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {getJobs} from '../services/api';
+import {getJobs, getEducationLevelList, getSalaryLevelList} from '../services/api';
 
 const useJobs = (
     {companyName, educationLevel, salaryLevel, page, prePage} = {},
@@ -14,10 +14,17 @@ const useJobs = (
       setLoading(true);
       setError(null);
       try {
-        const res = await getJobs(
-            {companyName, educationLevel, salaryLevel, page, prePage},
-        );
-        setData(res.data);
+        const [res, educationLevelList, salaryLevelList] = await Promise.all([
+          getJobs({companyName, educationLevel, salaryLevel, page, prePage}),
+          getEducationLevelList(),
+          getSalaryLevelList(),
+        ]);
+
+        setData(res.data.map((job) => ({
+          ...job,
+          educationLabel: educationLevelList.find((e) => `${e.id}` === `${job.educationId}`)?.label ?? '',
+          salaryLabel: salaryLevelList.find((s) => `${s.id}` === `${job.salaryId}`)?.label ?? '',
+        })));
         setTotal(res.total);
       } catch (err) {
         setError(err.message);
@@ -27,7 +34,7 @@ const useJobs = (
     };
     fetch();
   }, [companyName, educationLevel, salaryLevel, page, prePage]);
-
+  console.log(data);
   return {data, total, loading, error};
 };
 

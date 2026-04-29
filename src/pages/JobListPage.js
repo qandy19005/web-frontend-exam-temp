@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {
-  Box, Grid, Pagination, Typography, CircularProgress,
+  Box, Grid, Pagination, Typography, CircularProgress, PaginationItem,
 } from '@mui/material';
 import FilterBar from '../components/FilterBar';
 import JobCard from '../components/JobCard';
@@ -19,7 +19,6 @@ const JobListPage = () => {
   const {data, total, loading, error} = useJobs(
       {...filters, page, prePage: PRE_PAGE},
   );
-
   const totalPages = Math.ceil(total / PRE_PAGE);
 
   const handleSearch = (newFilters) => {
@@ -28,7 +27,7 @@ const JobListPage = () => {
   };
 
   return (
-    <Box className="border border-gray-500 rounded-xl p-6 m-5">
+    <Box className="border border-gray-500 rounded-xl p-6 m-5 shadow-[2px_2px_4px_rgba(0,0,0,0.25)]">
       <Box display="flex" alignItems="center" mb={2}>
         <Box className="w-1 h-4 rounded-sm bg-orange-700 mr-3" />
         <Typography className="font-bold text-gray-1000" variant="h6">適合前端工程師的好工作</Typography>
@@ -54,13 +53,17 @@ const JobListPage = () => {
 
       {!loading && !error && (
         <>
+          {data.length === 0 &&(
+            <div className="my-3 flex items-center justify-center w-full h-[458px] border border-gray-500 rounded-md text-gray-700">
+              無資料
+            </div>
+          )}
           <Grid container spacing={2}>
             {data.map((job) => (
               <Grid item xs={12} sm={6} md={4} key={job.id}>
                 <JobCard job={job} onClick={setSelectedId} />
               </Grid>
             ))}
-            {data.length === 0 &&(<>無資料</>)}
           </Grid>
 
           {totalPages > 1 && (
@@ -69,7 +72,12 @@ const JobListPage = () => {
                 count={totalPages}
                 page={page}
                 onChange={(_, value) => setPage(value)}
-                color="primary"
+                renderItem={(item) => (
+                  <PaginationItem
+                    {...item}
+                    className={item.selected ? '!bg-gray-300' : ''}
+                  />
+                )}
               />
             </Box>
           )}
