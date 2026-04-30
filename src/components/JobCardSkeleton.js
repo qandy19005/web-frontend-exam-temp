@@ -24,13 +24,13 @@ const JobCardSkeleton = () => (
       animation="wave"
       height={20}
       width="80%"
-      style={{marginBottom: 8}}
+      style={{marginBottom: 6}}
     />
     <Skeleton
       animation="wave"
       height={40}
       width="100%"
-      style={{marginBottom: 4}}
+      style={{marginBottom: 5}}
     />
     <Skeleton
       className="mx-auto"

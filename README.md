@@ -95,8 +95,9 @@ src/
 | `selectedId` | 被點擊的職缺 id，驅動 `JobDetailModal` 開啟 |
 
 觸發搜尋時同時將 `page` 重設為 1，避免篩選後停留在超出範圍的頁碼。
-
 每頁筆數（`PRE_PAGE`）依據 MUI `useMediaQuery` 判斷裝置寬度：手機 4 筆、桌機 6 筆。
+輸入完公司名稱按 Enter 可觸發搜尋
+透過觸發搜尋，畫面會自動 focus 到清單畫面
 
 ### 骨架（Skeleton）
 
