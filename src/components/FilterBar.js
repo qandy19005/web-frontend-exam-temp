@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {memo, useState} from 'react';
 import PropTypes from 'prop-types';
 import {TextField, MenuItem, Button, Stack} from '@mui/material';
 import useThrottle from '../hooks/useThrottle';
@@ -91,4 +91,4 @@ FilterBar.propTypes = {
   onSearch: PropTypes.func.isRequired,
 };
 
-export default FilterBar;
+export default memo(FilterBar);

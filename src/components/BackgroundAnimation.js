@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-import backgroundImage from '../assets/background.png';
+import backgroundImage from '../assets/background.webp';
 import logoImage from '../assets/logo.png';
-import characterImage from '../assets/character.png';
+import characterImage from '../assets/character.webp';
 import characterWhiteImage from '../assets/character-white.png';
 import rightEyeImage from '../assets/right-eye.png';
 import leftEyeImage from '../assets/left-eye.png';
@@ -12,15 +12,25 @@ const BackgroundAnimation = () => {
   const [eyeOffset, setEyeOffset] = useState({x: 0, y: 0});
 
   useEffect(() => {
+    let rafId = null;
+
     const handleMouseMove = (e) => {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      const x = ((e.clientX - cx) / cx) * MAX_OFFSET;
-      const y = ((e.clientY - cy) / cy) * (MAX_OFFSET / MAX_OFFSET);
-      setEyeOffset({x, y});
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const x = ((e.clientX - cx) / cx) * MAX_OFFSET;
+        const y = ((e.clientY - cy) / cy) * (MAX_OFFSET / MAX_OFFSET);
+        setEyeOffset({x, y});
+        rafId = null;
+      });
     };
+
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const eyeStyle = {

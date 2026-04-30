@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import PropTypes from 'prop-types';
 import {Card, Typography} from '@mui/material';
 import bookSvg from './../assets/book-outline.svg';
@@ -42,4 +43,4 @@ JobCard.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default JobCard;
+export default memo(JobCard);

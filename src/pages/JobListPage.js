@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 import {
   Box, Fade, Grid, Pagination, Typography, PaginationItem, useMediaQuery,
 } from '@mui/material';
@@ -24,10 +24,10 @@ const JobListPage = () => {
   );
   const totalPages = Math.ceil(total / PRE_PAGE);
 
-  const handleSearch = (newFilters) => {
+  const handleSearch = useCallback((newFilters) => {
     setFilters(newFilters);
     setPage(1);
-  };
+  }, []);
 
   return (
     <Box className="pb-7" sx={{width: '100%', minHeight: '100vh', background: 'linear-gradient(to right, #868686, #5C5C5C)'}}>
