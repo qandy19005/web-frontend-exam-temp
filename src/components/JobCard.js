@@ -6,7 +6,7 @@ import salarySvg from './../assets/salary.svg';
 
 const JobCard = ({job, onClick}) => (
   <Card variant="outlined" className="rounded-md border-gray-500 p-4 hover:shadow-[0px_0px_8px_rgba(0,0,0,0.35)]">
-    <Typography className="font-bold text-2xl text-gray-1000 mb-[10px]" noWrap>{job.companyName}</Typography>
+    <Typography className="font-bold sm:text-2xl text-gray-1000 mb-[10px]" noWrap>{job.companyName}</Typography>
     <div className="flex items-center mb-[8px]">
       <img src={personSvg} />
       <Typography className="text-sm text-gray-800 ml-[6px]" noWrap>

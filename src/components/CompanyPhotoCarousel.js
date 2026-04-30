@@ -33,7 +33,8 @@ const CompanyPhotoCarousel = ({photos}) => {
       <Swiper
         className="company-carousel"
         modules={[Autoplay, Pagination]}
-        slidesPerView={2.7}
+        slidesPerView={1.18}
+        breakpoints={{600: {slidesPerView: 2.7}}}
         autoplay={{delay: 3000, disableOnInteraction: false}}
         pagination={{clickable: true}}
         loop={groups.length > 3}
