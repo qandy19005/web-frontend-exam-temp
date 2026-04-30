@@ -6,7 +6,7 @@ import FilterBar from '../components/FilterBar';
 import JobCard from '../components/JobCard';
 import JobCardSkeleton from '../components/JobCardSkeleton';
 import JobDetailModal from '../components/JobDetailModal';
-// import BackgroundAnimation from '../components/BackgroundAnimation';
+import BackgroundAnimation from '../components/BackgroundAnimation';
 import useJobs from '../hooks/useJobs';
 import useFilterOptions from '../hooks/useFilterOptions';
 
@@ -31,7 +31,7 @@ const JobListPage = () => {
 
   return (
     <Box className="pb-7" sx={{width: '100%', minHeight: '100vh', background: 'linear-gradient(to right, #868686, #5C5C5C)'}}>
-      {/* <BackgroundAnimation /> */}
+      <BackgroundAnimation />
       <div className="sm:mx-7 relative">
         <Box className="border border-gray-500 sm:rounded-xl sm:p-6 p-4 shadow-[2px_2px_4px_rgba(0,0,0,0.25)] bg-white">
           <Box display="flex" alignItems="center" className="sm:mb-5 mb-3">
