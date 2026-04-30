@@ -18,17 +18,16 @@
 pnpm install
 
 # 啟動開發伺服器（預設 http://localhost:3000）
-pnpm start
+pnpm run start
 ```
 
 ### 其他指令
 
 | 指令 | 說明 |
 |---|---|
-| `pnpm start` | 啟動開發伺服器 |
-| `pnpm build` | 建立生產版本至 `build/` |
-| `pnpm test` | 執行測試 |
-| `pnpm lint` | 執行 ESLint 程式碼檢查 |
+| `pnpm run start` | 啟動開發伺服器 |
+| `pnpm run build` | 建立生產版本至 `build/` |
+| `pnpm run lint` | 執行 ESLint 程式碼檢查 |
 
 > API 由 [MirageJS](https://miragejs.com/) 在瀏覽器端攔截，無需另外啟動後端服務。
 
