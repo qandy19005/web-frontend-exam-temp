@@ -25,8 +25,8 @@ const JobCard = ({job, onClick}) => (
         {job.salaryLabel}
       </Typography>
     </div>
-    <Typography className="text-sm text-gray-1000 line-clamp-1" sx={{mt: 1}}>{job.preview}</Typography>
-    <Typography className="text-sm text-orange-700 text-center cursor-pointer font-bold" sx={{mt: 1}} onClick={() => onClick(job.id)}>查看細節</Typography>
+    <Typography className="text-sm text-gray-1000 line-clamp-1 my-[10px]">{job.preview}</Typography>
+    <Typography className="text-sm text-orange-700 text-center cursor-pointer font-bold" onClick={() => onClick(job.id)}>查看細節</Typography>
   </Card>
 );
 

@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 const CAROUSEL_STYLES = `
-  .company-carousel { padding-bottom: 28px !important; }
+  .company-carousel { padding-bottom: 30px !important; }
   .company-carousel .swiper-pagination-bullet {
     width: 6px; height: 6px;
     background: #CCCCCC; opacity: 1;

@@ -34,7 +34,6 @@ const useJobs = (
     };
     fetch();
   }, [companyName, educationLevel, salaryLevel, page, prePage]);
-  console.log(data);
   return {data, total, loading, error};
 };
 

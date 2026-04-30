@@ -10,6 +10,7 @@ const FilterBar = ({educationList, salaryList, onSearch}) => {
 
   const handleSearch = () => {
     onSearch({companyName, educationLevel, salaryLevel});
+    window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
   };
 
   const handleReset = () => {
@@ -17,6 +18,7 @@ const FilterBar = ({educationList, salaryList, onSearch}) => {
     setEducationLevel('');
     setSalaryLevel('');
     onSearch({companyName: '', educationLevel: '', salaryLevel: ''});
+    window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
   };
 
   const throttledSearch = useThrottle(handleSearch);

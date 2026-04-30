@@ -35,7 +35,7 @@ const JobCardSkeleton = () => (
     <Skeleton
       className="mx-auto"
       animation="wave"
-      height={20}
+      height={25}
       width="10%"
     />
   </>

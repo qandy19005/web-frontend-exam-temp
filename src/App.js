@@ -1,7 +1,7 @@
 import JobListPage from './pages/JobListPage';
 
 function App() {
-  return <JobListPage />;
+  return ( <JobListPage /> );
 }
 
 export default App;

@@ -16,7 +16,7 @@ const JobDetailModal = ({id, onClose}) => {
         <Typography className="text-gray-1000 font-bold text-2xl">詳細資料</Typography>
       </DialogTitle>
 
-      <DialogContent dividers>
+      <DialogContent dividers className="py-5 px-6">
         {error && (
           <Typography color="error">載入失敗：{error}</Typography>
         )}
@@ -25,14 +25,14 @@ const JobDetailModal = ({id, onClose}) => {
 
         {!loading && !error && data && (
           <>
-            <div className="flex items-center my-2">
+            <div className="flex items-center">
               <Typography className="text-gray-1000 font-bold text-2xl mr-2">{data.companyName}</Typography>
               <Typography className="text-gray-1000 text-xl">{data.jobTitle}</Typography>
             </div>
-            <div className="my-[10px]">
+            <div className="my-[18px]">
               <CompanyPhotoCarousel photos={data.companyPhoto} />
             </div>
-            <Typography className="text-gray-1100 font-bold text-xl">
+            <Typography className="text-gray-1100 font-bold text-xl -mt-4">
               工作內容
             </Typography>
             <Box className="px-2 mt-2 text-gray-800" dangerouslySetInnerHTML={{__html: data.description}} />
