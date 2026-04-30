@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/web-frontend-exam-temp/static/css/main.36c53a38.css",
-    "main.js": "/web-frontend-exam-temp/static/js/main.8692fcdd.js",
-    "static/media/character.png": "/web-frontend-exam-temp/static/media/character.1da36f99d79315835f3f.png",
-    "static/media/background.png": "/web-frontend-exam-temp/static/media/background.99a82a3e58d76d84dbad.png",
+    "main.js": "/web-frontend-exam-temp/static/js/main.53e11fcc.js",
     "static/media/logo.png": "/web-frontend-exam-temp/static/media/logo.6b546831015955d19f63.png",
+    "static/media/character.webp": "/web-frontend-exam-temp/static/media/character.ec4f30891684ad3cf31f.webp",
+    "static/media/background.webp": "/web-frontend-exam-temp/static/media/background.d5fcb2be6972e9b1e5e9.webp",
     "static/media/character-white.png": "/web-frontend-exam-temp/static/media/character-white.46acde39e30494688517.png",
     "static/media/salary.svg": "/web-frontend-exam-temp/static/media/salary.b4b04b813d7c6d621c05743280337c1c.svg",
     "static/media/book-outline.svg": "/web-frontend-exam-temp/static/media/book-outline.bbabaa6bc3de9869b0ea99ca9b3ef034.svg",
     "index.html": "/web-frontend-exam-temp/index.html",
     "static/media/person-outline.svg": "/web-frontend-exam-temp/static/media/person-outline.687b72f4ca9c6ccc7b220ca93c04d75f.svg",
     "main.36c53a38.css.map": "/web-frontend-exam-temp/static/css/main.36c53a38.css.map",
-    "main.8692fcdd.js.map": "/web-frontend-exam-temp/static/js/main.8692fcdd.js.map"
+    "main.53e11fcc.js.map": "/web-frontend-exam-temp/static/js/main.53e11fcc.js.map"
   },
   "entrypoints": [
     "static/css/main.36c53a38.css",
-    "static/js/main.8692fcdd.js"
+    "static/js/main.53e11fcc.js"
   ]
 }
