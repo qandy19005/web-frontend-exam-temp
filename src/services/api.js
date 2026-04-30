@@ -22,6 +22,14 @@ export const getJobs = ({
 
 export const getJobById = (id) => get(`/jobs/${id}`);
 
-export const getEducationLevelList = () => get('/educationLevelList');
+let educationLevelListCache = null;
+export const getEducationLevelList = () => {
+  if (!educationLevelListCache) educationLevelListCache = get('/educationLevelList');
+  return educationLevelListCache;
+};
 
-export const getSalaryLevelList = () => get('/salaryLevelList');
+let salaryLevelListCache = null;
+export const getSalaryLevelList = () => {
+  if (!salaryLevelListCache) salaryLevelListCache = get('/salaryLevelList');
+  return salaryLevelListCache;
+};
