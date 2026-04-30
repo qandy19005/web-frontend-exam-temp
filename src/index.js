@@ -95,14 +95,16 @@ new Server({
       if (!isNaN(prePage) && !isNaN(page)) {
         const startIndex = (page - 1) * prePage;
         const endIndex = startIndex + prePage;
-        const filterData = filterFormat(data, companyName, educationLevel, salaryLevel);
+        const filterData = filterFormat(
+            data, companyName, educationLevel, salaryLevel);
         const resultData = filterData.slice(startIndex, endIndex);
         return {
           data: resultData,
           total: filterData.length,
         };
       } else {
-        const result = filterFormat(data, companyName, educationLevel, salaryLevel);
+        const result = filterFormat(
+            data, companyName, educationLevel, salaryLevel);
         return {
           data: result,
           total: result.length,

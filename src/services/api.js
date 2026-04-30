@@ -6,7 +6,9 @@ const get = async (path) => {
   return res.json();
 };
 
-export const getJobs = ({companyName, educationLevel, salaryLevel, page, prePage} = {}) => {
+export const getJobs = ({
+  companyName, educationLevel, salaryLevel, page, prePage,
+} = {}) => {
   const params = new URLSearchParams();
   if (companyName) params.set('company_name', companyName);
   if (educationLevel) params.set('education_level', educationLevel);

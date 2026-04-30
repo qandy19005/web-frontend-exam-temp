@@ -1,171 +1,122 @@
-# Frontend Engineer Exam
+# Yile Frontend Exam
 
-這是一份 Yile 前端工程師的徵才專案，會需根據規則及設計檔完成頁面需求。
+以 React 實作的職缺列表頁面，包含篩選、分頁、職缺詳情彈窗，以及含視差互動的背景動畫。
 
-## ⭐️ 需求
+---
 
-### 框架
+## 如何執行
 
-1. 語言：Javascript
-2. Framework：
-   1. 建議使用 React.js / Next.js，使用 Vue.js 亦可接受
+### 環境需求
 
-### CSS
+- Node.js >= 16
+- pnpm / npm / yarn（擇一）
 
-可以選擇以下其一或者搭配做為使用
+### 安裝與啟動
 
-1. [Material UI](https://mui.com/material-ui/)
-2. [Sass](https://sass-lang.com/)
-3. [Tailwindcss](https://tailwindcss.com/)
+```bash
+# 安裝相依套件
+pnpm install
 
-### Coding Style
+# 啟動開發伺服器（預設 http://localhost:3000）
+pnpm start
+```
 
-採用 [Google Coding Style](https://google.github.io/styleguide/) 或 [Airbnb Style](https://github.com/airbnb/javascript)，我們將會審查你的程式碼是否符合風格規範
+### 其他指令
 
-## 📝 實作描述
+| 指令 | 說明 |
+|---|---|
+| `pnpm start` | 啟動開發伺服器 |
+| `pnpm build` | 建立生產版本至 `build/` |
+| `pnpm test` | 執行測試 |
+| `pnpm lint` | 執行 ESLint 程式碼檢查 |
 
-- 請 Fork 此專案做開發
-- 根據 [Figma](https://www.figma.com/file/VcTqAK0x3JBi9nMvqN9YXJ/Web-Frontend-Developer-Exam?type=design&node-id=0%3A1&mode=design&t=EAnp3AAU1aqJ66e2-1) 實作頁面，請 `登入` 帳號才可看到實作細節
-- 若有任何優化、更好方式請自由發揮，但確保基本功能皆有達成需求
+> API 由 [MirageJS](https://miragejs.com/) 在瀏覽器端攔截，無需另外啟動後端服務。
 
-## ✅ 提交說明
+---
 
-1. 請將專案上傳至 Github，提交 Repositories 連結給 HR，我們將會閱讀你的程式碼
-2. 請提供一份 README 文件說明
-   1. 如何執行此專案
-   2. 專案架構、邏輯說明
-   3. 專案遇到的困難、問題及解決方法
-3. 請回傳給 HR，內容需包含 Github Repositories Link
+## 技術
 
-## 🥇 加分項目
+| 類別 | 套件 |
+|---|---|
+| UI 框架 | React 18 |
+| 元件庫 | Material UI v5 |
+| 樣式 | Tailwind CSS v3 |
+| Mock API | MirageJS |
+| 圖片輪播 | Swiper |
+| Coding Style | Google JavaScript Style Guide（ESLint） |
 
-- 加載資料時的過渡表現
-- 細節動畫表現
-- 部署至任一平台以供成果檢視，例如：Heroku、AWS S3、GCS、Github Page …… 等
+---
 
-## ⚠️ 注意事項
+## 專案架構
 
-- 素材為本公司內部所有，除此次線上考使用，請勿另用他途。
-
-## ⚙️ API
-
-### Job List [GET] `/api/v1/jobs`
-
-工作列表
-
-**Parameter**
-
-| Name | Description |
-| ---------------- | -------------- |
-| pre_page         | 每頁顯示筆數     |
-| page             | 指定頁面頁數     |
-| company_name     | 公司名稱        |
-| education_level  | 教育程度 id     |
-| salary_level     | 薪資範圍 id     |
-
-**Response**
-
-```json
-{
-  "data": [
-    {
-      "id": "1",
-      "companyName": "立刻科技",
-      "jobTitle": "資深前端工程師",
-      "educationId": 4,
-      "salaryId": 3,
-      "preview": "招募經驗豐富的前端工程師，共創卓越網頁體驗！",
-    }
-  ],
-  "total": 1
-}
+```
+src/
+├── index.js                      # 入口： React + 初始化 MirageJS mock server
+├── App.js                        # 根元件，直接渲染 JobListPage
+├── pages/
+│   └── JobListPage.js            # 組合所有元件與狀態
+├── components/
+│   ├── BackgroundAnimation.js    # 頁首背景圖 + 滑鼠視差眼球動畫
+│   ├── FilterBar.js              # 篩選欄（公司名稱、教育程度、薪資範圍）
+│   ├── JobCard.js                # 單筆職缺卡片
+│   ├── JobCardSkeleton.js        # 職缺卡片載入骨架屏
+│   ├── JobDetailModal.js         # 職缺詳情 Dialog
+│   ├── JobDetailModalSkeleton.js # 詳情 Dialog 載入骨架屏
+│   └── CompanyPhotoCarousel.js   # 公司照片 Swiper 輪播
+├── hooks/
+│   ├── useJobs.js                # 取得職缺列表（含教育／薪資 label 合併）
+│   ├── useJobDetail.js           # 取得單筆職缺詳情
+│   ├── useFilterOptions.js       # 取得教育程度、薪資範圍選項
+│   └── useThrottle.js            # throttle hook，限制搜尋觸發頻率
+├── services/
+│   └── api.js                    # fetch 封裝，統一管理 API 呼叫
+└── constants/
+    ├── jobList.js                # 職缺 mock 資料
+    ├── educationList.js          # 教育程度 mock 資料
+    └── salaryList.js             # 薪資範圍 mock 資料
 ```
 
 ---
 
-### Education Level List [GET] `/api/v1/educationLevelList`
+## 邏輯說明
 
-教育程度列表
+### 資料取得（`hooks/`）
 
-**Response**
+- **`useJobs`**：同時呼叫職缺列表、教育程度、薪資範圍三支 API（`Promise.all`），將 `educationId` / `salaryId` 轉換為 `educationLabel` / `salaryLabel` 後回傳，省去各元件自行查找的需要。
+- **`useJobDetail`**：僅在 `id` 存在時發出請求，避免無效呼叫。
+- **`useFilterOptions`**：在篩選欄初始化時取得下拉選單選項。
+- **`useThrottle`**：對搜尋、重設按鈕套用 1 秒節流，防止短時間內重複送出請求。
 
-```json
-[
-  {
-     "id": "1", "label": "國小"
-  },
-  {
-     "id": "2", "label": "國中"
-  },
-  {
-     "id": "3", "label": "高中"
-  },
-  {
-     "id": "4", "label": "大學"
-  },
-  {
-     "id": "5", "label": "碩士"
-  },
-  {
-     "id": "6", "label": "博士"
-  }
-]
-```
+### 頁面狀態（`JobListPage.js`）
 
----
+| 狀態 | 說明 |
+|---|---|
+| `filters` | 目前生效的篩選條件 |
+| `page` | 目前分頁頁碼 |
+| `selectedId` | 被點擊的職缺 id，驅動 `JobDetailModal` 開啟 |
 
-### Salary Level List [GET] `/api/v1/salaryLevelList`
+觸發搜尋時同時將 `page` 重設為 1，避免篩選後停留在超出範圍的頁碼。
 
-薪資範圍列表
+每頁筆數（`PRE_PAGE`）依據 MUI `useMediaQuery` 判斷裝置寬度：手機 4 筆、桌機 6 筆。
 
-**Response**
+### 骨架（Skeleton）
 
-```json
-[
-  {
-    "id": "1", "label": "待遇面議"
-  },
-  {
-    "id": "2", "label": "月薪 40,000 ~ 60,000 元"
-  },
-  {
-    "id": "3", "label": "月薪 70,000 ~ 100,000 元"
-  },
-  {
-    "id": "4", "label": "年薪 800,000 ~ 1,000,000 元"
-  },
-  {
-    "id": "5", "label": "年薪 800,000 ~ 1,500,000 元"
-  },
-  {
-    "id": "6", "label": "年薪 1,500,000 ~ 2,000,000 元"
-  },
-  {
-    "id": "7", "label": "年薪 2,000,000 ~ 2,500,000 元"
-  }
-]
-```
+資料載入中以 `JobCardSkeleton` / `JobDetailModalSkeleton` 佔位，資料就緒後以 MUI `Fade` 淡入，提升視覺過渡體驗。
 
----
+### 背景動畫（`BackgroundAnimation.js`）
 
-### Job [GET] `/api/v1/jobs/:id`
+監聽 `window mousemove` 事件，計算滑鼠相對螢幕中心的偏移比例，對左右眼圖片套用對應的 `translate` transform，模擬眼球跟隨視線移動的效果。
 
-單一工作資訊
+## 專案遇到的困難
 
-**Response**
+1. 圖片輪播 UI/UX
 
-```json
-{
-  "id": "6",
-  "description": "<h1>貨運操作員</h1><h2>工作地點：公司總部 - 台北市</h2><h2>職責與要求</h2><ul><li>負責倉儲內的物品搬運、分裝、包裝及出貨作業，確保貨物的準確性和完整性。<br />遵循公司的作業流程和安全規範，保障倉庫內的工作環境。<br />與團隊成員合作，確保倉儲操作的順暢進行。<br />需具備基本的電腦操作能力，能使用相關SaaS系統進行庫存管理。<br />需要有良好的溝通協調能力，能有效地與其他部門合作，確保整體物流運作的協調性。<br />對倉儲物流行業有興趣，願意學習並接受公司提供的培訓。</li></ul><h2>資格</h2><ul><li>至少高中畢業，具備相關物流或倉儲操作經驗者優先考慮。<br />具有貨運相關證照者尤佳。<br />對工作積極負責，有良好的工作態度和團隊協作精神。<br />願意接受輪班工作，能夠適應倉儲作業的體力需求。</li></ul><h2>我們提供</h2><ul><li>充滿挑戰性的工作環境，與國際化的專業團隊一同合作。<br />完善的培訓體系，協助您提升相關技能和知識。<br />良好的晉升機會，公司快速發展將為您提供更多職涯發展空間。<br />公司福利包括勞健保、團體保險、員工餐飲補助等。</li></ul><p>如果您渴望挑戰自我，想要加入一個充滿活力和機會的團隊，請將您的履歷寄至 <a href=\"mailto:hr@jenjanlogistics.com\">hr@jenjanlogistics.com</a>，我們期待與您攜手共創物流行業的未來。<br /><br />【JenJan真站電商衛星倉儲物流】期待您的加入！</p>",
-  "companyPhoto": [
-    "https://picsum.photos/250/150",
-    "https://picsum.photos/250/150",
-    "https://picsum.photos/250/150",
-    "https://picsum.photos/250/150",
-    "https://picsum.photos/250/150"
-  ],
-  "jobTitle": "廚師助手",
-  "companyName": "餐飲樂活"
-}
-```
+### 問題及解決方法
+
+1. 圖片輪播的 UI/UX 調整難與 Figma 吻合:
+解法: 先嘗試用 react-material-ui-carousel 但發現最後張圖片預覽不好處理，透過 ChatGPT 找了另一個 Swipper 剛好有提供預覽
+節省了處理 UI/UX 的時間
+
+## 回饋
+好玩! 尤其看到要製作眼睛飄移，一開始還在思考該怎麼處理，想說眼睛不是整顆的難道要自己再畫一顆，但設計師通常不會刁難工程師，看到了重點"微服移動"，
+鬆了一口氣，自己本身喜歡嘗試有趣的動畫，覺得這個測驗非常有趣!
