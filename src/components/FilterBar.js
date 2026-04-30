@@ -34,7 +34,7 @@ const FilterBar = ({educationList, salaryList, onSearch}) => {
         placeholder="請輸入公司名稱"
         inputProps={{className: 'text-gray-1000 py-4'}}
         InputLabelProps={{shrink: true, className: 'text-gray-1000'}}
-        color='background'
+        color="background"
         sx={{flexGrow: 1}}
       />
       <TextField
@@ -48,7 +48,7 @@ const FilterBar = ({educationList, salaryList, onSearch}) => {
         inputProps={{className: 'text-gray-1000 py-4'}}
         InputLabelProps={{shrink: true, className: 'text-gray-1000'}}
         SelectProps={{displayEmpty: true}}
-        color='background'
+        color="background"
       >
         <MenuItem value="">不限</MenuItem>
         {educationList.map((item) => (
@@ -66,7 +66,7 @@ const FilterBar = ({educationList, salaryList, onSearch}) => {
         inputProps={{className: 'text-gray-1000 py-4'}}
         InputLabelProps={{shrink: true, className: 'text-gray-1000'}}
         SelectProps={{displayEmpty: true}}
-        color='background'
+        color="background"
       >
         <MenuItem value="">不限</MenuItem>
         {salaryList.map((item) => (

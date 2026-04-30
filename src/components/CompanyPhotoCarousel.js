@@ -1,29 +1,59 @@
 import PropTypes from 'prop-types';
 import {Box} from '@mui/material';
-import Carousel from 'react-material-ui-carousel';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Autoplay, Pagination} from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
-const CompanyPhotoCarousel = ({photos}) => (
-  <Carousel
-    autoPlay swipe interval={5000}
-    IndicatorIcon={<Box sx={{width: 6, height: 6, bgcolor: 'currentColor', borderRadius: '50%'}} />}
-    indicatorIconButtonProps={{sx: {'color': '#CCCCCC', 'p': '3px', '&:hover': {color: '#EE8927'}}}}
-    activeIndicatorIconButtonProps={{sx: {'color': '#EE8927', '&:hover': {color: '#EE8927'}, 'p': '3px', '& > div': {width: 28, borderRadius: '5px'}}}}
-  >
-    {photos.reduce((groups, url, i) => {
-      const g = Math.floor(i / 3);
-      if (!groups[g]) groups[g] = [];
-      groups[g].push(url);
-      return groups;
-    }, []).map((group, gi) => (
-      <Box key={gi} sx={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1}}>
-        {group.map((url, ji) => (
-          <Box className="cursor-pointer" key={ji} component="img" src={url} alt={`公司照片 ${gi * 3 + ji + 1}`} draggable={false}
-            sx={{width: 250, height: 150, objectFit: 'cover', userSelect: 'none'}} />
+const CAROUSEL_STYLES = `
+  .company-carousel { padding-bottom: 28px !important; }
+  .company-carousel .swiper-pagination-bullet {
+    width: 6px; height: 6px;
+    background: #CCCCCC; opacity: 1;
+    border-radius: 50%;
+    transition: width 0.2s, border-radius 0.2s;
+  }
+  .company-carousel .swiper-pagination-bullet-active {
+    width: 28px; border-radius: 5px; background: #EE8927;
+  }
+  .company-carousel .swiper-pagination-bullet:hover { background: #EE8927; }
+`;
+
+const CompanyPhotoCarousel = ({photos}) => {
+  const groups = photos.reduce((acc, url, i) => {
+    const g = Math.floor(i / 3);
+    if (!acc[g]) acc[g] = [];
+    acc[g].push(url);
+    return acc;
+  }, []);
+
+  return (
+    <>
+      <style>{CAROUSEL_STYLES}</style>
+      <Swiper
+        className="company-carousel"
+        modules={[Autoplay, Pagination]}
+        slidesPerView={2.7}
+        autoplay={{delay: 3000, disableOnInteraction: false}}
+        pagination={{clickable: true}}
+        loop={groups.length > 3}
+      >
+        {photos.map((url, i) => (
+          <SwiperSlide key={i}>
+            <Box
+              className="cursor-pointer"
+              component="img"
+              src={url}
+              alt={`公司照片 $1}`}
+              draggable={false}
+              sx={{height: 150, objectFit: 'cover', userSelect: 'none'}}
+            />
+          </SwiperSlide>
         ))}
-      </Box>
-    ))}
-  </Carousel>
-);
+      </Swiper>
+    </>
+  );
+};
 
 CompanyPhotoCarousel.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.string).isRequired,
