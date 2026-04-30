@@ -29,6 +29,7 @@ const FilterBar = ({educationList, salaryList, onSearch}) => {
         label="公司名稱"
         value={companyName}
         onChange={(e) => setCompanyName(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && throttledSearch()}
         size="small"
         placeholder="請輸入公司名稱"
         inputProps={{className: 'text-gray-1000 py-4'}}

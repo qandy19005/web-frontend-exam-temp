@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import {
   Dialog, DialogTitle, DialogContent, DialogActions,
-  Button, Typography, CircularProgress, Box,
+  Button, Typography, Box,
 } from '@mui/material';
 import useJobDetail from '../hooks/useJobDetail';
 import CompanyPhotoCarousel from './CompanyPhotoCarousel';
+import JobDetailModalSkeleton from './JobDetailModalSkeleton';
 
 const JobDetailModal = ({id, onClose}) => {
   const {data, loading, error} = useJobDetail(id);
@@ -16,15 +17,11 @@ const JobDetailModal = ({id, onClose}) => {
       </DialogTitle>
 
       <DialogContent dividers>
-        {loading && (
-          <Box display="flex" justifyContent="center" py={6}>
-            <CircularProgress />
-          </Box>
-        )}
-
         {error && (
           <Typography color="error">載入失敗：{error}</Typography>
         )}
+
+        {loading && <JobDetailModalSkeleton />}
 
         {!loading && !error && data && (
           <>

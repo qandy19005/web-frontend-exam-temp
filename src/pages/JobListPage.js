@@ -1,9 +1,10 @@
 import {useState} from 'react';
 import {
-  Box, Grid, Pagination, Typography, CircularProgress, PaginationItem,
+  Box, Fade, Grid, Pagination, Typography, PaginationItem,
 } from '@mui/material';
 import FilterBar from '../components/FilterBar';
 import JobCard from '../components/JobCard';
+import JobCardSkeleton from '../components/JobCardSkeleton';
 import JobDetailModal from '../components/JobDetailModal';
 import useJobs from '../hooks/useJobs';
 import useFilterOptions from '../hooks/useFilterOptions';
@@ -41,47 +42,62 @@ const JobListPage = () => {
         />
       </Box>
 
-      {loading && (
-        <Box display="flex" justifyContent="center" py={6}>
-          <CircularProgress />
-        </Box>
-      )}
-
       {error && (
         <Typography color="error">載入失敗：{error}</Typography>
       )}
 
-      {!loading && !error && (
+      {loading && (
         <>
-          {data.length === 0 &&(
-            <div className="my-3 flex items-center justify-center w-full h-[458px] border border-gray-500 rounded-md text-gray-700">
-              無資料
-            </div>
-          )}
           <Grid container spacing={2}>
-            {data.map((job) => (
-              <Grid item xs={12} sm={6} md={4} key={job.id}>
-                <JobCard job={job} onClick={setSelectedId} />
-              </Grid>
-            ))}
+            {
+              Array.from({length: PRE_PAGE}).map((_, i) => (
+                <Grid item xs={12} sm={6} md={4} key={i}>
+                  <div className="py-1">
+                    <JobCardSkeleton />
+                  </div>
+                </Grid>
+              ))
+            }
           </Grid>
-
-          {totalPages > 1 && (
-            <Box display="flex" justifyContent="center" mt={4}>
-              <Pagination
-                count={totalPages}
-                page={page}
-                onChange={(_, value) => setPage(value)}
-                renderItem={(item) => (
-                  <PaginationItem
-                    {...item}
-                    className={item.selected ? '!bg-gray-300' : ''}
-                  />
-                )}
-              />
-            </Box>
-          )}
         </>
+      )}
+
+      {!loading && !error && (
+        <Fade in timeout={400}>
+          <div>
+            {(data.length === 0) &&(
+              <div className="my-3 flex items-center justify-center w-full h-[458px] border border-gray-500 rounded-md text-gray-700">
+              無資料
+              </div>
+            )}
+            <Grid container spacing={2}>
+              {data.map((job) => (
+                <Grid item xs={12} sm={6} md={4} key={job.id}>
+                  <JobCard
+                    job={job} isLoading={loading} onClick={setSelectedId}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+
+          </div>
+        </Fade>
+      )}
+
+      {totalPages > 1 && (
+        <Box display="flex" justifyContent="center" mt={4}>
+          <Pagination
+            count={totalPages}
+            page={page}
+            onChange={(_, value) => setPage(value)}
+            renderItem={(item) => (
+              <PaginationItem
+                {...item}
+                className={item.selected ? '!bg-gray-300' : ''}
+              />
+            )}
+          />
+        </Box>
       )}
 
       <JobDetailModal
