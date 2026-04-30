@@ -13,3 +13,7 @@
   100% { transform: scale(1); }
 }
 /* BackgroundAnimation.js style end */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
