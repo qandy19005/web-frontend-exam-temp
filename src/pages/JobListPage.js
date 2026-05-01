@@ -36,7 +36,7 @@ const JobListPage = () => {
         <Box className="border border-gray-500 sm:rounded-xl sm:p-6 p-4 shadow-[2px_2px_4px_rgba(0,0,0,0.25)] bg-white">
           <Box display="flex" alignItems="center" className="sm:mb-5 mb-3">
             <Box className="w-1 h-4 rounded-sm bg-orange-700 mr-3" />
-            <Typography className="font-bold text-gray-1000" variant="h6">適合前端工程師的好工作</Typography>
+            <Typography className="font-bold text-gray-1000 sm:text-2xl text-xl">適合前端工程師的好工作</Typography>
           </Box>
 
           <Box className="mb-5 hidden sm:block">

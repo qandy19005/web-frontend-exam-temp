@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+}
+
 /* BackgroundAnimation.js style start */
 .logo-pulse {
   animation: logoPulse 1.5s ease-in-out infinite;

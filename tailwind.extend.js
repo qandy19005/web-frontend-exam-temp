@@ -1,4 +1,7 @@
 module.exports = {
+  fontFamily: {
+    sans: ['Noto Sans TC', 'sans-serif'],
+  },
   colors: {
     red: {
       100: '#FBEFEC',

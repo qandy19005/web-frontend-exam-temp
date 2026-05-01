@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {StyledEngineProvider} from '@mui/material/styles';
+import {StyledEngineProvider, ThemeProvider} from '@mui/material/styles';
 import './index.css';
 import App from './App';
+import theme from './theme';
 import jobList from './constants/jobList';
 import educationList from './constants/educationList';
 import salaryList from './constants/salaryList';
@@ -141,6 +142,8 @@ new Server({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <StyledEngineProvider injectFirst>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </StyledEngineProvider>,
 );
