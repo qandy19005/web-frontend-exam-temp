@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/web-frontend-exam-temp/static/css/main.8b70c802.css",
-    "main.js": "/web-frontend-exam-temp/static/js/main.22cb0c19.js",
+    "main.css": "/web-frontend-exam-temp/static/css/main.03d0d407.css",
+    "main.js": "/web-frontend-exam-temp/static/js/main.0acb5f19.js",
     "static/media/logo.png": "/web-frontend-exam-temp/static/media/logo.6b546831015955d19f63.png",
     "static/media/character.webp": "/web-frontend-exam-temp/static/media/character.ec4f30891684ad3cf31f.webp",
     "static/media/background.webp": "/web-frontend-exam-temp/static/media/background.d5fcb2be6972e9b1e5e9.webp",
     "static/media/character-white.png": "/web-frontend-exam-temp/static/media/character-white.46acde39e30494688517.png",
     "static/media/salary.svg": "/web-frontend-exam-temp/static/media/salary.b4b04b813d7c6d621c05743280337c1c.svg",
-    "static/media/book-outline.svg": "/web-frontend-exam-temp/static/media/book-outline.bbabaa6bc3de9869b0ea99ca9b3ef034.svg",
     "index.html": "/web-frontend-exam-temp/index.html",
+    "static/media/book-outline.svg": "/web-frontend-exam-temp/static/media/book-outline.bbabaa6bc3de9869b0ea99ca9b3ef034.svg",
     "static/media/person-outline.svg": "/web-frontend-exam-temp/static/media/person-outline.687b72f4ca9c6ccc7b220ca93c04d75f.svg",
-    "main.8b70c802.css.map": "/web-frontend-exam-temp/static/css/main.8b70c802.css.map",
-    "main.22cb0c19.js.map": "/web-frontend-exam-temp/static/js/main.22cb0c19.js.map"
+    "main.03d0d407.css.map": "/web-frontend-exam-temp/static/css/main.03d0d407.css.map",
+    "main.0acb5f19.js.map": "/web-frontend-exam-temp/static/js/main.0acb5f19.js.map"
   },
   "entrypoints": [
-    "static/css/main.8b70c802.css",
-    "static/js/main.22cb0c19.js"
+    "static/css/main.03d0d407.css",
+    "static/js/main.0acb5f19.js"
   ]
 }
