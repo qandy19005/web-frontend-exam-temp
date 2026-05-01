@@ -39,14 +39,14 @@ const BackgroundAnimation = () => {
   };
 
   return (
-    <div className="sm:-mb-28 relative w-full md:h-[823px] h-[238px]" style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+    <div className="sm:-mb-28 relative w-full lg:h-[823px] h-[238px]" style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
       <div className="absolute">
-        <img src={characterWhiteImage} className="block md:w-auto md:h-auto w-[317px] h-[238px]"/>
-        <img src={characterImage} className="absolute top-0 left-0 md:w-auto md:h-auto w-[317px] h-[238px]"/>
+        <img src={characterWhiteImage} className="block lg:w-auto lg:h-auto w-[317px] h-[238px]"/>
+        <img src={characterImage} className="absolute top-0 left-0 lg:w-auto lg:h-auto w-[317px] h-[238px]"/>
         <img src={rightEyeImage} className="absolute" style={{left: '66.5%', top: '36.9%', width: '3.5%', height: '3.55%', ...eyeStyle}}/>
         <img src={leftEyeImage} className="absolute" style={{left: '52.8%', top: '37.5%', width: '3.87%', height: '4.18%', ...eyeStyle}}/>
       </div>
-      <img src={logoImage} className="absolute sm:right-[83px] sm:bottom-[150px] right-[11px] bottom-[23px] logo-pulse w-[137px] h-[82px] md:w-auto md:h-auto"/>
+      <img src={logoImage} className="absolute lg:right-[83px] lg:bottom-[150px] right-[11px] bottom-[23px] logo-pulse w-[137px] h-[82px] md:w-auto md:h-auto"/>
     </div>
   );
 };
